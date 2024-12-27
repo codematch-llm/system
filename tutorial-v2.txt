@@ -1,4 +1,8 @@
 Tutorial install and run the final combined-project-v2:
+
+-----------------------------------------------------------------------------
+INSTALLATION:
+-----------------------------------------------------------------------------
 1. Open combined-project-v2 folder and put all the files from git there.
 Add the .env file with the:
 OPENAI_KEY=?
@@ -32,8 +36,16 @@ https://docs.docker.com/engine/install/
 
 9. Install qdrant: https://qdrant.tech/documentation/guides/installation/
 
-10. Run the project:
+
+-----------------------------------------------------------------------------
+RUN:
+-----------------------------------------------------------------------------
+10. Run the database (Qdrant):
+run qdrant_server.py
+
+11. Run the project:
 npm run serve ( to run the vue.js pages)
 uvicorn backend.main:app --reload ( to run the api)
 
 
+Qdrant collections API - http://localhost:6333/dashboard

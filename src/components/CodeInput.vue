@@ -1,6 +1,8 @@
 <template>
   <div class="code-input">
-    <h1>Code Similarity Detection</h1>
+    <div class="title-image">
+        <img src="/images/codeMatch-logo.png" width="350" alt="codeMatch Logo" />
+    </div>
     <!-- Important Note -->
     <div class="important-note">
       <p><strong><i class="fas fa-exclamation-circle small-icon"></i> Important Note </strong><br />

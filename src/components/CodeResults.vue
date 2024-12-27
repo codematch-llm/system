@@ -1,14 +1,15 @@
 <template>
-  <div class="results">
-    <h2>Code Similarity Detection Results</h2>
-    <p class="subtitle">View the most similar code snippets based on your input</p>
+  <div class="results" style="text-align: Center;">
+    <div class="title-image">
+      <img src="/images/codeMatch-logo.png" width="300" alt="codeMatch Logo" />
+    </div>
+    <p class="subtitle" style="font-size: 18px;" >View the most similar code snippets based on your input</p>
     <div class="content">
       
       <!-- Left Column: Code Display and Refresh Button -->
       <div class="code-display">
         
-        <br>
-        <p class="code-subtitle">The code you entered:</p>
+        <h3>The code you entered</h3>
         <textarea 
           v-model="code" 
           readonly 
@@ -19,7 +20,7 @@
 
       <!-- Right Column: Sort Options and Results List -->
       <div class="result-list">
-        <h3><u>Top Results</u></h3>
+        <h3>Top Results</h3>
         
         <!-- Sorting Dropdown -->
         <label for="sortCriteria">Sort by:</label>
