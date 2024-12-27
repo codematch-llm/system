@@ -2,9 +2,9 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict
 from fastapi.middleware.cors import CORSMiddleware
-from backend.testing_system import process_user_input
-from backend.fill_vector_db import load_model_with_retries
-from backend.utils import *
+from backend.tests.testing_system import process_user_input
+from backend.app.database import load_model_with_retries
+from backend.config import *
 
 from transformers import AutoTokenizer, AutoModel
 
