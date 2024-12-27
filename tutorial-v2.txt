@@ -44,8 +44,16 @@ RUN:
 run qdrant_server.py
 
 11. Run the project:
-npm run serve ( to run the vue.js pages)
-uvicorn backend.main:app --reload ( to run the api)
+    Open a new terminal:
+        cd frontend
+        npm run serve ( to run the vue.js pages)
+    
+    Open another terminal:
+        uvicorn backend.main:app --reload ( to run the api)
 
 
-Qdrant collections API - http://localhost:6333/dashboard
+-----------------------------------------------------------------------------
+Access:
+-----------------------------------------------------------------------------
+To access the local website - on the 'node' terminal open the Local url given - http://localhost:8080/ 
+To see the database of embeddings - Qdrant collections API - http://localhost:6333/dashboard
