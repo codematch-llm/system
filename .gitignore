@@ -1,3 +1,4 @@
 node_modules
 huggingface_models/
 .env
+backend/__pycache__
