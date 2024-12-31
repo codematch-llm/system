@@ -1,25 +1,33 @@
 <template>
   <div class="code-input">
     <div class="title-image">
-        <img src="/images/codeMatch-logo.png" width="350" alt="codeMatch Logo" />
+      <img src="/images/codeMatch-logo.png" width="350" alt="codeMatch Logo" />
     </div>
+
     <!-- Important Note -->
     <div class="important-note">
       <p><strong><i class="fas fa-exclamation-circle small-icon"></i> Important Note </strong><br />
-      For the best results, please insert a code snippet that represents a single functionality.
-      <br />
-      <em><i class="fas fa-star small-icon"></i> Preferably <b>ONE</b> class or function.</em></p>
+        For the best results, please insert a code snippet that represents a single functionality.
+        <br />
+        <em><i class="fas fa-star small-icon"></i> Preferably <b>ONE</b> class or function.</em></p>
     </div>
-
 
     <textarea 
       v-model="code" 
       placeholder="Enter code snippet..." 
       :maxlength="maxChars"
     ></textarea>
-    <!-- <p>{{ remainingWords }} words remaining</p> -->
-    <button @click="submitCode"><div v-if="loading" class="loading-spinner"></div>
-Submit</button>
+
+    <!-- Display the model name under the textarea -->
+    <div class="model-name">
+      <p><strong>Model in Use:</strong> {{ modelName }}</p>
+    </div>
+
+    <!-- Submit button -->
+    <button @click="submitCode">
+      <div v-if="loading" class="loading-spinner"></div>
+      Submit
+    </button>
   </div>
 </template>
 
@@ -33,16 +41,15 @@ export default {
       code: this.$route.query.code || "",
       minWords: 50,  // Constant for minimum word count
       maxWords: 500,  // Constant for maximum word count
-      loading: false // New property for loading state
+      loading: false, // New property for loading state
+      modelName: "" // New variable for model name
     };
   },
   computed: {
-    // wordCount() {
-    //   return this.code.trim().split(/\s+/).filter(word => word).length;
-    // },
-    // remainingWords() {
-    //   return Math.max(0, this.maxWords - this.wordCount);
-    // }
+
+  },
+  mounted() {
+    this.fetchModelName(); // Fetch the model name when the component is mounted
   },
   watch: {
     "$route.query.code"(newCode) {
@@ -52,27 +59,39 @@ export default {
     }
   },
   methods: {
+    async fetchModelName() {
+      try {
+        const backendUrl =
+          process.env.NODE_ENV === "production"
+            ? "http://backend:8000" // Docker-internal hostname for production
+            : "http://localhost:8000"; // Localhost for development
+
+        const response = await axios.get(`${backendUrl}/get_model_name`);
+        this.modelName = response.data.model_name;
+      } catch (error) {
+        console.error("Error fetching model name:", error);
+        this.modelName = "Error fetching model name!";
+      }
+    },
     async submitCode() {
       this.loading = true; // Start loading
-      // const wordCount = this.wordCount;
 
-      // if (wordCount < this.minWords || wordCount > this.maxWords) {
-      //   alert(`Code snippet must be between ${this.minWords} and ${this.maxWords} words.`);
-      //   this.loading = false; // Stop loading on error
-      //   return;
-      // }
-
-      // if (this.code.length > this.maxChars) {
-      //   alert("Code input exceeds the 2000 character limit.");
-      //   return;
-      // }
       try {
         // Send the code to the FastAPI backend
-        const response = await axios.post("http://localhost:8000/process_code", { code: this.code });
+
+        const backendUrl =
+          process.env.NODE_ENV === "production"
+            ? "http://backend:8000" // Docker-internal hostname for production
+            : "http://localhost:8000"; // Localhost for development
+
+
+        // const response = await axios.post("http://localhost:8000/process_code", { code: this.code });
+        // const response = await axios.post("http://backend:8000/process_code", { code: this.code });
+        const response = await axios.post(`${backendUrl}/process_code`, { code: this.code });
         const results = response.data; // Get the results from the response
         console.log("Received results from backend:", results); // Log the response data
 
-
+        
         // Navigate to the Results page and pass the code and results as query parameters
         this.$router.push({ 
           path: "/results", 
@@ -89,12 +108,14 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .code-input {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .important-note {
   text-align: left;
   width: 50%;
@@ -106,6 +127,7 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
   animation: fadeIn 0.5s ease-out;
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -117,7 +139,6 @@ export default {
   }
 }
 
-
 textarea {
   width: 50%;
   height: 300px;
@@ -127,12 +148,19 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  font-family: 'Roboto Mono', monospace; /* Add a monospace font for code */
+  font-family: 'Roboto Mono', monospace;
   transition: border-color 0.3s ease;
+  resize: vertical; /* Allow vertical resizing */
 }
 
+.model-name {
+  text-align: left;
+  width: 50%; /* Match the textarea width */
+  margin-top: 5px; /* Add a small space between textarea and text */
+}
 
 button {
+  margin-top: 20px; /* Add spacing between the button and model-name */
   padding: 10px 20px;
   font-size: 16px;
   background-color: #000;
@@ -141,6 +169,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #333;
 }
@@ -156,6 +185,7 @@ h1 {
   font-size: 0.7rem; /* Adjust the size as needed */
   vertical-align: middle; /* Aligns icon vertically with text */
 }
+
 .loading-spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-top: 4px solid #007bff;
@@ -170,6 +200,5 @@ h1 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-
 </style>
+

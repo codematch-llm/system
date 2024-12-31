@@ -4,9 +4,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import requests
 from collections import Counter
 from datasets import load_dataset
-from backend.app.splitv2_ppc import preprocess_code
-from backend.config import *
-from backend.app.qdrant_server import *
+from app.splitv2_ppc import preprocess_code
+from config import *
+from app.qdrant_server import *
 
 #Load The Stack dataset in streaming mode.
 def load_dataset_stream():

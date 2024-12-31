@@ -1,6 +1,6 @@
 import re
 from transformers import AutoTokenizer, AutoModel
-from backend.config import *
+from config import *
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModel.from_pretrained(MODEL_NAME)

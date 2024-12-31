@@ -132,7 +132,7 @@ export default {
 
 textarea {
   width: 100%;
-  height: 650px;
+  height: 50vh;
   margin-bottom: 10px;
   padding: 10px;
   background-color: #f0f0f0;

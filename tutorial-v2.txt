@@ -41,11 +41,11 @@ https://docs.docker.com/engine/install/
 RUN:
 -----------------------------------------------------------------------------
 
-10. Populate VectorDB with data:
-    run populate_database.py
-
-11. Run the database (Qdrant):
+10. Run the database (Qdrant):
     run qdrant_server.py
+
+11. Populate VectorDB with data:
+    run populate_database.py
 
 12. Run the project:
     Open a new terminal:
@@ -61,3 +61,35 @@ Access:
 -----------------------------------------------------------------------------
 To access the local website - on the 'node' terminal open the Local url given - http://localhost:8080/ 
 To see the database of embeddings - Qdrant collections API - http://localhost:6333/dashboard
+
+
+
+Docker:
+docker-compose up 
+
+after everything is up (3 services - frontend, backend and qdrant (db))
+run:
+$env:PYTHONPATH = (Get-Location).Path  
+Write-Output $env:PYTHONPATH
+check that the path ends with 'backend'
+
+and run
+populate_database.py
+
+
+Local:
+Terminal 1:
+        cd frontend
+        npm run serve ( to run the vue.js pages)
+
+Terminal 2:
+    when on path ends with 'system' run:
+        $env:PYTHONPATH = (Get-Location).Path
+        cd backend
+        uvicorn backend.main:app --reload ( to run the api)
+
+Run the database (Qdrant):
+    run qdrant_server.py
+
+Populate VectorDB with data (if not already populated):
+    run populate_database.py

@@ -2,9 +2,9 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict
 from fastapi.middleware.cors import CORSMiddleware
-from backend.tests.testing_system import process_user_input
-from backend.app.database import load_model_with_retries
-from backend.config import *
+from tests.testing_system import process_user_input
+from app.database import load_model_with_retries
+from config import *
 
 from transformers import AutoTokenizer, AutoModel
 
@@ -15,14 +15,17 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080"],  # Replace with your frontend's origin
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# allow_origins=["http://localhost:8080"],  # Replace with your frontend's origin
+
 # Load the model and tokenizer once at startup
-model_name = QWEN_MODEL_NAME
+model_name = CODEBERT_MODEL_NAME
+# model_name = QWEN_MODEL_NAME
 model, tokenizer = load_model_with_retries(model_name, CACHE_DIR)
 
 
@@ -54,10 +57,16 @@ class CodeResult(BaseModel):
 #         # Add up to 10 results or dynamically generate based on your logic
 #     ]
 
+@app.get("/get_model_name")
+async def get_model_name():
+    return {"model_name": model_name}
+
 @app.post("/process_code", response_model=List[CodeResult])
 async def process_code(request: CodeRequest):
     code = request.code
     try:
+        print("Checkingg......")
+        print(QDRANT_HOST)
         # Call the find_top10 function with the received code
         similar_codes = process_user_input(code, model, tokenizer)
         # print(similar_codes)

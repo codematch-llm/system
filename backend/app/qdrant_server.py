@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from backend.config import *
+from config import *
 import subprocess
 from qdrant_client import QdrantClient, models
 from qdrant_client.http.models import PointStruct, Filter, FieldCondition, MatchAny

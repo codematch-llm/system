@@ -4,17 +4,17 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import pandas as pd
 from transformers import AutoTokenizer, AutoModel
 from qdrant_client import QdrantClient
-from backend.app.database import load_model_with_retries, create_embedding, generate_code_embedding_generic
+from app.database import load_model_with_retries, create_embedding, generate_code_embedding_generic
 from qdrant_client.http.models import Filter, FieldCondition, MatchAny
-from backend.config import *
+from config import *
 
 # Constants
 TOP_K_RESULTS = 8
 
-client = QdrantClient(url=f"http://{QDRANT_HOST}:{QDRANT_PORT}")
+# client = QdrantClient(url=f"http://{QDRANT_HOST}:{QDRANT_PORT}")
 
 # Search for similar code in the Qdrant vector database based on the given embedding.
-def search_similar_code(embedding):
+def search_similar_code(client, embedding):
     search_results = client.search(
         collection_name=COLLECTION_NAME,
         query_vector=embedding,
@@ -54,9 +54,12 @@ def display_results(results):
 # Process a user-input code snippet.
 def process_user_input(user_code, model, tokenizer):
     list_results = []
+
+    client = QdrantClient(url=f"http://{QDRANT_HOST}:{QDRANT_PORT}")
+
     # embedding = create_embedding(user_code, model, tokenizer)
     embedding = generate_code_embedding_generic(user_code, model, tokenizer)
-    results = search_similar_code(embedding)
+    results = search_similar_code(client, embedding)
     list_results = display_results(results)
         
     return list_results

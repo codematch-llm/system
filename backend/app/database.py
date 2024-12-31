@@ -3,10 +3,10 @@ from transformers import AutoTokenizer, AutoModel, T5EncoderModel, AutoModelForS
 import numpy as np
 import time
 from datetime import datetime
-from backend.app.pull_data_v2_stack import *
-from backend.app.splitv2_ppc import is_sample_too_short
-from backend.config import *
-from backend.app.qdrant_server import *
+from app.pull_data_v2_stack import *
+from app.splitv2_ppc import is_sample_too_short
+from config import *
+from app.qdrant_server import *
 
 # Define constants
 MAX_RETRIES = 3
@@ -20,7 +20,7 @@ loaded_tokenizer = None
 global_id_counter = 0
 
 # Checks if the qdrant collection exists
-def ensure_collection_exists(collection_name, embedding_size):
+def ensure_collection_exists(client, collection_name, embedding_size):
     global global_id_counter
     global_id_counter = 0
 
@@ -88,14 +88,14 @@ def load_model_with_retries(model_name, cache_dir, retries=3, wait_time=10):
                 model = AutoModel.from_pretrained(model_name, cache_dir=cache_dir)
             elif model_name == CODET5_MODEL_NAME:
                 model = T5EncoderModel.from_pretrained(model_name, cache_dir=cache_dir)
-            elif model_name == QWEN_MODEL_NAME:
-                quantization_config = BitsAndBytesConfig(load_in_8bit=True)
-                model = AutoModelForCausalLM.from_pretrained(
-                    model_name,
-                    cache_dir=cache_dir,
-                    quantization_config=quantization_config,
-                    device_map="auto"  # Automatically maps layers to available devices
-                )
+            # elif model_name == QWEN_MODEL_NAME:
+            #     quantization_config = BitsAndBytesConfig(load_in_8bit=True)
+            #     model = AutoModelForCausalLM.from_pretrained(
+            #         model_name,
+            #         cache_dir=cache_dir,
+            #         quantization_config=quantization_config,
+            #         device_map="auto"  # Automatically maps layers to available devices
+            #     )
             else:
                 raise ValueError(f"Unsupported model name: {model_name}")
             
@@ -246,7 +246,7 @@ def index_with_retries(model, repo, sample, tokenizer):
     global_id_counter += 1
 
 # Index code examples from local files listed in the provided CSV file. Each file will be split, embedded, and added to the vector database.
-def index_from_local_files(model, tokenizer, csv_path):
+def index_from_local_files(base_dir, model, tokenizer, csv_path):
     global global_id_counter  # Ensure unique IDs across all entries
 
     # Load CSV data
@@ -262,6 +262,7 @@ def index_from_local_files(model, tokenizer, csv_path):
         star_count = row['star_count']
         directory_id = row['directory_id']
 
+        file_path = os.path.join(base_dir, file_path)
         # Read the file content
         try:
             with open(file_path, 'r', encoding='utf-8') as f:

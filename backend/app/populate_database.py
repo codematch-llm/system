@@ -1,16 +1,19 @@
 import sys 
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from backend.app.pull_data_v2_stack import *
-from backend.app.database import *
-from backend.app.splitv2_ppc import *
+from app.pull_data_v2_stack import *
+from app.database import *
+from app.splitv2_ppc import *
 import time
 from transformers import AutoTokenizer, AutoModel
-from backend.config import *
-from backend.app.qdrant_server import *
+from config import *
+from app.qdrant_server import *
 
 MAX_ROWS_PER_LANG = 1
-LOCAL_FILES_INFO = 'backend/data/files_info.csv'
+# LOCAL_FILES_INFO = 'backend/data/files_info.csv'
+# LOCAL_FILES_INFO = 'data/files_info.csv'
+
+BASE_DIR = os.getenv("PYTHONPATH", os.getcwd())  # Fallback to current working directory if PYTHONPATH is not set
+LOCAL_FILES_INFO = os.path.join(BASE_DIR, "data", "files_info.csv")
 
 # Process each file in the repository, fetch content, split it, and attempt to index it in Qdrant.
 def process_repository_files(repository, model, tokenizer):
@@ -43,6 +46,8 @@ def process_repository_files(repository, model, tokenizer):
 def main():
     # Start timer
     start_time = time.time()
+    
+    client = QdrantClient(url=f"http://{QDRANT_HOST}:{QDRANT_PORT}")
 
     # Start Qdrant server
     start_qdrant_server()
@@ -52,7 +57,7 @@ def main():
     model, tokenizer = load_model_with_retries(MODEL_NAME, CACHE_DIR)
     
     # Ensure the collection exists
-    ensure_collection_exists(COLLECTION_NAME, EMBEDDING_SIZE)
+    ensure_collection_exists(client, COLLECTION_NAME, EMBEDDING_SIZE)
     
     # Present user options
     while True:
@@ -80,7 +85,7 @@ def main():
             break
         
         elif user_choice == "2":
-            index_from_local_files(model, tokenizer, LOCAL_FILES_INFO)
+            index_from_local_files(BASE_DIR, model, tokenizer, LOCAL_FILES_INFO)
             break
         
         else:
