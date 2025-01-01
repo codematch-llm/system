@@ -34,7 +34,7 @@
 
 ---
 
-### **Run Locally**
+### **Running Locally**
 
 #### **Installation**
 
@@ -50,7 +50,7 @@
    npm install
    ```
 
----
+
 
 #### **Run**
 
@@ -87,7 +87,7 @@
 
 ---
 
-### **Self-Host (Docker)**
+### **Running with Docker**
 
 1. **Ensure you are in the project root directory (`system`)**.
 
