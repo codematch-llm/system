@@ -17,7 +17,6 @@ services:
     # Define environment variables for sensitive data such as API keys
     environment:
       - ENV=production
-      - OPENAI_KEY=${OPENAI_KEY}
       - HUGGING_FACE_TOKEN=${HUGGING_FACE_TOKEN}
       - QDRANT_HOST=qdrant
     # Ensure the backend service starts after the Qdrant database is ready
