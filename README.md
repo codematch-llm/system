@@ -24,7 +24,7 @@
    git clone https://github.com/codematch-llm/system.git
    ```
 
-6. **Acquire Access to The-Stack-V2 Dataset**:
+6. **Acquire Access to The-Stack-V2 Dataset**:   
    a. [Get access to The-Stack-V2 dataset](https://huggingface.co/datasets/bigcode/the-stack-v2-train-smol-ids)  
    b. [Create a Hugging Face personal access token](https://huggingface.co/settings/tokens/new?tokenType=read)  
    c. Add the token to the `.env` file in the root directory:  
