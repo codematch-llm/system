@@ -1,11 +1,13 @@
 
-# CodeMatch (Picture)
+# CodeMatch
+<div align="center">
+<img  src="https://github.com/user-attachments/assets/39e7cb7d-9995-44fd-93dc-88978946f056" alt="Workflow" width="1500">
+</div>
 
-We detect stolen* code using LLM
 
-The system repository is where we have the final application of CodeMatch.
-In this repe we present the general workflow from how we retrieve the code from the web, to how we detect code clones with a given code snippet. 
-The system is devided into three main components - Backend, Frontend and a Vector Database.
+The system repository hosts the final application of CodeMatch.
+In this repository, we outline the complete workflow, from retrieving code from the web to detecting code clones for a given code snippet.
+The system is divided into three core components: Backend, Frontend, and Vector Database.
 
 Gif/ Screenshots of the web app
 
