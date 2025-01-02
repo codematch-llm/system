@@ -37,9 +37,9 @@ This step involves retrieving code projects from GitHub to populate the database
 
 
 
-## 📦📥 Installation and Run
+## 📦🛠️ Installation and Run
 
-### **Prerequisites**:
+### 📥 **Prerequisites**:
 
 1. **Python**: 3.9+  
 2. **Docker Desktop**:  
@@ -70,7 +70,7 @@ This step involves retrieving code projects from GitHub to populate the database
 
 ---
 
-### **Running with Docker**
+### 🐳 **Running with Docker**
 
 1. **Ensure you are in the project root directory (`system`)**.
 
@@ -92,7 +92,7 @@ This step involves retrieving code projects from GitHub to populate the database
 
 ---
    
-### **Running Locally**
+### 💻 **Running Locally**
 
 #### **Installation**
 
@@ -107,8 +107,7 @@ This step involves retrieving code projects from GitHub to populate the database
    cd frontend
    npm install
    ```
-
-
+   
 
 #### **Run**
 
