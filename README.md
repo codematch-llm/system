@@ -12,7 +12,7 @@ The system is divided into three core services: Backend, Frontend, and Vector Da
 
 Gif/ Screenshots of the web app
 
-<img src="https://github.com/user-attachments/assets/4e3878d0-55d1-47f3-b4ab-4a267d9e4be7" alt="inputted-code" width="420">
+<img src="https://github.com/user-attachments/assets/43bc9da3-689d-4077-8194-0daf9de8ea92" alt="inputted-code" width="420">
 <img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="search-result" width="420">
 
 ## Table of Contents
