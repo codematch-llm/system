@@ -18,8 +18,6 @@ The system is divided into three core services: Backend, Frontend, and Vector Da
   </div>
 
 
----
-
 ## General Components
 
 The system consists of two main components essential for its operation:
@@ -39,7 +37,7 @@ This step involves retrieving code projects from GitHub to populate the database
 
 
 
-## Installation and Run
+## 📦 Installation and Run
 
 ### **Prerequisites**:
 
