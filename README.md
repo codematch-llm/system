@@ -1,7 +1,35 @@
 
-### **This is the full tutorial to install and run the system on your machine - Local or via Docker.**
+# CodeMatch (Picture)
+
+We detect stolen* code using LLM
+
+The system repository is where we have the final application of CodeMatch.
+In this repe we present the general workflow from how we retrieve the code from the web, to how we detect code clones with a given code snippet. 
+The system is devided into three main components - Backend, Frontend and a Vector Database.
+
+Gif/ Screenshots of the web app
+
+## Table of Contents
+..
+..
+..
+
 
 ---
+
+## General Components
+
+The system has two main components that make it fully run:
+- System Workflow - the structure of backend + frontend and the connection to the database.
+  (Image of the workflow)
+
+- Populate Database - in order to have data in the database we should retrieve code projects from github - in this step we do this.
+   (Image of the workflow)
+
+
+
+
+## Installation and Run
 
 ### **Prerequisites**:
 
