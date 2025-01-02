@@ -11,8 +11,16 @@ In this repository, we outline the complete workflow, from retrieving code from 
 The system is divided into three core services: Backend, Frontend, and Vector Database.
 
 
-<img src="https://github.com/user-attachments/assets/43bc9da3-689d-4077-8194-0daf9de8ea92" alt="inputted-code" width="700">
-<img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="search-result" width="700">
+- **Main Page**: Enter the desired code snippet to find existing GitHub projects with similar code.  
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/43bc9da3-689d-4077-8194-0daf9de8ea92" alt="Inputted Code" width="700">
+  </div>
+
+- **Similar GitHub Projects Page**: Displays all the GitHub projects with code similar to the input.  
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="Search Results" width="700">
+  </div>
+
 
 ---
 
