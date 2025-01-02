@@ -1,8 +1,5 @@
 
-# CodeMatch
-<div align="center">
-<img  src="https://github.com/user-attachments/assets/39e7cb7d-9995-44fd-93dc-88978946f056" alt="Workflow" width="1500">
-</div>
+# CodeMatch - System
 
 ---
 
