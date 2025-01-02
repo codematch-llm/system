@@ -4,29 +4,39 @@
 <img  src="https://github.com/user-attachments/assets/39e7cb7d-9995-44fd-93dc-88978946f056" alt="Workflow" width="1500">
 </div>
 
+---
 
 The system repository hosts the final application of CodeMatch.
 In this repository, we outline the complete workflow, from retrieving code from the web to detecting code clones for a given code snippet.
-The system is divided into three core components: Backend, Frontend, and Vector Database.
+The system is divided into three core services: Backend, Frontend, and Vector Database.
 
 Gif/ Screenshots of the web app
+
+<img src="https://github.com/user-attachments/assets/4e3878d0-55d1-47f3-b4ab-4a267d9e4be7" alt="inputted-code" width="420">
+<img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="search-result" width="425">
 
 ## Table of Contents
 ..
 ..
 ..
 
-
 ---
 
 ## General Components
 
-The system has two main components that make it fully run:
-- System Workflow - the structure of backend + frontend and the connection to the database.
-  (Image of the workflow)
+The system consists of two main components essential for its operation:
 
-- Populate Database - in order to have data in the database we should retrieve code projects from github - in this step we do this.
-   (Image of the workflow)
+### System Workflow
+This includes the structure of the backend and frontend, along with their integration with the database.
+
+<img src="https://github.com/user-attachments/assets/5232c3ac-cc52-42fa-b7b5-8dbecb11dc2a" alt="Workflow" width="500">
+
+<br>
+
+### Populate Database
+This step involves retrieving code projects from GitHub to populate the database with data.
+
+<img src="https://github.com/user-attachments/assets/d6656be1-762f-4a78-978d-8db500746e4a" alt="Workflow" width="700">
 
 
 
