@@ -10,10 +10,9 @@ The system repository hosts the final application of CodeMatch.
 In this repository, we outline the complete workflow, from retrieving code from the web to detecting code clones for a given code snippet.
 The system is divided into three core services: Backend, Frontend, and Vector Database.
 
-Gif/ Screenshots of the web app
 
-<img src="https://github.com/user-attachments/assets/43bc9da3-689d-4077-8194-0daf9de8ea92" alt="inputted-code" width="410">
-<img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="search-result" width="410">
+<img src="https://github.com/user-attachments/assets/43bc9da3-689d-4077-8194-0daf9de8ea92" alt="inputted-code" width="700">
+<img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="search-result" width="700">
 
 ---
 
