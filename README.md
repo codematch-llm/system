@@ -1,8 +1,6 @@
 
 # CodeMatch - System
 
----
-
 The system repository hosts the final application of CodeMatch.
 In this repository, we outline the complete workflow, from retrieving code from the web to detecting code clones for a given code snippet.
 The system is divided into three core services: Backend, Frontend, and Vector Database.
