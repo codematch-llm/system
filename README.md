@@ -72,6 +72,28 @@ This step involves retrieving code projects from GitHub to populate the database
 
 ---
 
+### **Running with Docker**
+
+1. **Ensure you are in the project root directory (`system`)**.
+
+2. **Start all services**:
+   ```bash
+   docker-compose up
+   ```
+   - This launches:
+     - Backend API at [http://localhost:8000](http://localhost:8000)
+     - Frontend at [http://localhost:8080](http://localhost:8080)
+     - Qdrant Dashboard at [http://localhost:6333/dashboard](http://localhost:6333/dashboard)
+
+3. **Populate the Database**:
+   ```bash
+   cd backend
+   $env:PYTHONPATH = (Get-Location).Path  # Ensure the path ends with 'backend' (check with `Write-Output $env:PYTHONPATH`)
+   python populate_database.py
+   ```
+
+---
+   
 ### **Running Locally**
 
 #### **Installation**
@@ -122,26 +144,3 @@ This step involves retrieving code projects from GitHub to populate the database
    python populate_database.py
    ```
    - Verify the database is populated by checking the Qdrant dashboard at [http://localhost:6333/dashboard](http://localhost:6333/dashboard).
-
----
-
-### **Running with Docker**
-
-1. **Ensure you are in the project root directory (`system`)**.
-
-2. **Start all services**:
-   ```bash
-   docker-compose up
-   ```
-   - This launches:
-     - Backend API at [http://localhost:8000](http://localhost:8000)
-     - Frontend at [http://localhost:8080](http://localhost:8080)
-     - Qdrant Dashboard at [http://localhost:6333/dashboard](http://localhost:6333/dashboard)
-
-3. **Populate the Database**:
-   ```bash
-   cd backend
-   $env:PYTHONPATH = (Get-Location).Path  # Ensure the path ends with 'backend' (check with `Write-Output $env:PYTHONPATH`)
-   python populate_database.py
-   ```
-
