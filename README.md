@@ -13,12 +13,12 @@ The system is divided into three core services: Backend, Frontend, and Vector Da
 
 - **Main Page**: Enter the desired code snippet to find existing GitHub projects with similar code.  
   <div align="center">
-    <img src="https://github.com/user-attachments/assets/43bc9da3-689d-4077-8194-0daf9de8ea92" alt="Inputted Code" width="700">
+    <img src="https://github.com/user-attachments/assets/43bc9da3-689d-4077-8194-0daf9de8ea92" alt="Inputted Code" width="1000">
   </div>
 
 - **Similar GitHub Projects Page**: Displays all the GitHub projects with code similar to the input.  
   <div align="center">
-    <img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="Search Results" width="700">
+    <img src="https://github.com/user-attachments/assets/21bae129-d765-4246-ae6e-2861ba02d685" alt="Search Results" width="1000">
   </div>
 
 
