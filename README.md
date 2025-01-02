@@ -5,7 +5,7 @@ The system repository hosts the final application of CodeMatch.
 In this repository, we outline the complete workflow, from retrieving code from the web to detecting code clones for a given code snippet.
 The system is divided into three core services: Backend, Frontend, and Vector Database.
 
-## User Interface Overview
+## 🖥️ User Interface Overview
 
 - **Main Page**: Enter the desired code snippet to find existing GitHub projects with similar code.  
   <div align="center">
@@ -18,7 +18,7 @@ The system is divided into three core services: Backend, Frontend, and Vector Da
   </div>
 
 
-## General Components
+## ⚙️ General Components
 
 The system consists of two main components essential for its operation:
 
@@ -37,7 +37,7 @@ This step involves retrieving code projects from GitHub to populate the database
 
 
 
-## 📦 Installation and Run
+## 📦📥 Installation and Run
 
 ### **Prerequisites**:
 
