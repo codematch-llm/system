@@ -34,7 +34,7 @@ This step involves retrieving code projects from GitHub to populate the database
 
 <img src="https://github.com/user-attachments/assets/d6656be1-762f-4a78-978d-8db500746e4a" alt="Workflow" width="700">
 
-
+(This step is done in the following process - [populate_database.py](https://github.com/codematch-llm/system/blob/main/backend/app/populate_database.py))
 
 
 ## 📦🛠️ Installation and Run
